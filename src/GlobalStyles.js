@@ -16,6 +16,7 @@ export const GlobalStyles = createGlobalStyle`
 
     ul {
         list-style: none;
+        padding: 0;
     }
 
     button {
