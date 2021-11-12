@@ -1,12 +1,12 @@
 import React from 'react'
 import { GlobalStyles } from './GlobalStyles'
 
-import { Category } from './components/Category'
+import { ListOfCategories } from './components/ListOfCategories'
 
 export const App = () => (
 	<>
 		<GlobalStyles />
-		<h1>Hola Petgram</h1>
-		<Category />
+		<h1>Petgram</h1>
+		<ListOfCategories />
 	</>
 )
