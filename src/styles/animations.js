@@ -15,3 +15,14 @@ export const fadeIn = ({ time = '1s', type = 'ease' } = {}) =>
 	css`
 		animation: ${time} ${fadeInKeyframes} ${type};
 	`
+
+const bounceDownKeyFrames = keyframes`
+		0%   { transform: translateY(-10px); }
+        50%  { transform: translateY(50px); }
+        100% { transform: scale(0.7) translateY(-10px); }
+`
+
+export const bounceDown = ({ time = '0.3s', type = 'ease' } = {}) =>
+	css`
+		animation: ${time} ${bounceDownKeyFrames} ${type};
+	`
