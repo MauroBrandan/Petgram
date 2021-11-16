@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { fadeIn } from '../../styles/animations'
 
 export const Article = styled.article`
+	min-height: 200px;
 	margin-bottom: 32px;
 `
 
