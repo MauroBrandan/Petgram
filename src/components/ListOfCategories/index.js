@@ -1,19 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { List, Item } from './styles'
 
-import { Category } from '../Category/'
+import { Category, CategorySkeleton } from '../Category/'
+import { useFetchData } from '../../hooks/useFetchData'
 
 export const ListOfCategories = () => {
-	const [categories, setCategories] = useState([])
+	const [categories, loading] = useFetchData('https://petgram-api-mb.vercel.app/categories', [])
 	const [showFixed, setShowFixed] = useState(false)
-
-	useEffect(() => {
-		window.fetch('https://petgram-api-mb.vercel.app/categories')
-			.then((res) => res.json())
-			.then((data) => {
-				setCategories(data)
-			})
-	}, [])
 
 	useEffect(() => {
 		const onScroll = (e) => {
@@ -23,9 +16,7 @@ export const ListOfCategories = () => {
 
 		document.addEventListener('scroll', onScroll)
 
-		return () => {
-			document.removeEventListener('scroll', onScroll)
-		}
+		return () => document.removeEventListener('scroll', onScroll)
 	}, [showFixed])
 
 	const renderList = (fixed) => (
@@ -37,6 +28,20 @@ export const ListOfCategories = () => {
 			))}
 		</List>
 	)
+
+	if (loading) {
+		return (
+			<>
+				<List>
+					{[1, 2, 3, 4, 5].map((category) => (
+						<Item key={category}>
+							<CategorySkeleton />
+						</Item>
+					))}
+				</List>
+			</>
+		)
+	}
 
 	return (
 		<>

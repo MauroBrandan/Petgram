@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { skeletonLoading } from '../../styles/animations'
 
 export const Anchor = styled.a`
 	display: flex;
@@ -18,4 +19,23 @@ export const Image = styled.img`
 	height: 75px;
 	width: 75px;
 	margin-bottom: 8px;
+`
+export const SkeletonWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+`
+
+export const SkeletonImage = styled.div`
+	width: 75px;
+	height: 75px;
+	border-radius: 50%;
+	${skeletonLoading()}
+`
+
+export const SkeletonTitle = styled.p`
+	width: 26px;
+	height: 15px;
+	margin-top: 8px;
+	${skeletonLoading()}
 `
