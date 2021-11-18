@@ -1,5 +1,5 @@
 import React from 'react'
-import { Article, ImgWrapper, Img, Button } from './styles'
+import { Article, ImgWrapper, Img, Button, ImgSkeleton, ButtonSkeleton } from './styles'
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { useNearScreen } from '../../hooks/useNearScreen'
@@ -34,3 +34,10 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
 		</Article>
 	)
 }
+
+export const PhotoCardSkeleton = () => (
+	<Article>
+		<ImgSkeleton />
+		<ButtonSkeleton />
+	</Article>
+)

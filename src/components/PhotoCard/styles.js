@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { fadeIn } from '../../styles/animations'
+import { skeletonLoading } from '../../styles/animations'
 
 export const Article = styled.article`
 	min-height: 200px;
@@ -34,4 +35,16 @@ export const Button = styled.button`
 		margin-right: 4px;
 		${fadeIn({ time: '250ms', type: 'ease-in' })}
 	}
+`
+export const ImgSkeleton = styled.div`
+	width: 100%;
+	height: 280px;
+	${skeletonLoading()}
+`
+
+export const ButtonSkeleton = styled.div`
+	width: 55px;
+	height: 30px;
+	margin: 12px 12px;
+	${skeletonLoading()}
 `
