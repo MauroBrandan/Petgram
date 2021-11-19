@@ -1,8 +1,9 @@
 import React from 'react'
-import { Article, ImgWrapper, Img, Button, ImgSkeleton, ButtonSkeleton } from './styles'
-import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
+import { Article, ImgWrapper, Img, ImgSkeleton, ButtonSkeleton } from './styles'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { useNearScreen } from '../../hooks/useNearScreen'
+import { useLikePhoto } from '../../hooks/useLikePhoto'
+import { FavButton } from '../FavButton'
 
 const DEFAULT_IMAGE =
 	'https://res.cloudinary.com/midudev/image/upload/w_300/q_80/v1560262103/dogs.png'
@@ -11,9 +12,12 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
 	const key = `like-${id}`
 	const [liked, setLiked] = useLocalStorage(key, false)
 	const [show, card] = useNearScreen()
+	const [toggleLike] = useLikePhoto()
 
-	const Icon = liked ? MdFavorite : MdFavoriteBorder
-	const color = liked ? '#ff275a' : ''
+	const handleFavClick = () => {
+		!liked && toggleLike({ variables: { input: { id: id } } })
+		setLiked(!liked)
+	}
 
 	return (
 		<Article ref={card}>
@@ -25,10 +29,7 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
 						</ImgWrapper>
 					</a>
 
-					<Button onClick={() => setLiked(!liked)}>
-						<Icon size='32px' color={color} />
-						{likes} likes
-					</Button>
+					<FavButton liked={liked} likes={likes} onClick={handleFavClick} />
 				</>
 			)}
 		</Article>
