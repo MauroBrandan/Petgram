@@ -1,7 +1,8 @@
 import styled from 'styled-components'
+import { Link as LinkRouter } from 'react-router-dom'
 import { skeletonLoading } from '../../styles/animations'
 
-export const Anchor = styled.a`
+export const Link = styled(LinkRouter)`
 	display: flex;
 	flex-direction: column;
 	text-align: center;
