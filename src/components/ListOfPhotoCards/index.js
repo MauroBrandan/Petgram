@@ -3,7 +3,7 @@ import { useQuery, gql } from '@apollo/client'
 
 import { PhotoCard, PhotoCardSkeleton } from '../PhotoCard'
 
-const getPhotos = gql`
+const GET_PHOTOS = gql`
 	query getPhotos($categoryId: ID) {
 		photos(categoryId: $categoryId) {
 			id
@@ -16,11 +16,8 @@ const getPhotos = gql`
 	}
 `
 export const ListOfPhotoCards = ({ categoryId }) => {
-	const { loading, error, data } = useQuery(getPhotos, { variables: { categoryId } })
+	const { loading, error, data } = useQuery(GET_PHOTOS, { variables: { categoryId } })
 
-	if (error) {
-		return <h2>Internal Server Error</h2>
-	}
 	if (loading) {
 		return (
 			<ul>
@@ -30,6 +27,8 @@ export const ListOfPhotoCards = ({ categoryId }) => {
 			</ul>
 		)
 	}
+	
+	if (error) return <h2>Internal Server Error</h2>
 
 	return (
 		<ul>
