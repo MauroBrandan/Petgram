@@ -32,6 +32,7 @@ export const GlobalStyles = createGlobalStyle`
         max-width: 500px;
         overscroll-behavior: none;
         width: 100%;
+        -webkit-tap-highlight-color: transparent;
     }
 
     #app {
