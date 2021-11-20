@@ -4,7 +4,7 @@ import { skeletonLoading } from '../../styles/animations'
 
 export const Article = styled.article`
 	min-height: 200px;
-	margin-bottom: 32px;
+	margin: 32px 0;
 `
 
 export const ImgWrapper = styled.div`
