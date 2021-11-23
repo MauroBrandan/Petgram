@@ -8,7 +8,7 @@ import { Home } from './pages/Home'
 import { Detail } from './pages/Detail'
 import { Favorites } from './pages/Favorites'
 import { User } from './pages/User'
-import { Register } from './pages/Register'
+import { NotRegisteredUser } from './pages/NotRegisteredUser'
 
 export const App = () => {
 	const { isAuth } = useContext(Context)
@@ -21,8 +21,8 @@ export const App = () => {
 				<Route path='/' element={<Home />} />
 				<Route path='/pet/:categoryId' element={<Home />} />
 				<Route path='/detail/:detailId' element={<Detail />} />
-				<Route path='/favs' element={isAuth ? <Favorites /> : <Register />} />
-				<Route path='/user' element={isAuth ? <User /> : <Register />} />
+				<Route path='/favs' element={isAuth ? <Favorites /> : <NotRegisteredUser />} />
+				<Route path='/user' element={isAuth ? <User /> : <NotRegisteredUser />} />
 			</Routes>
 			<NavBar />
 		</BrowserRouter>

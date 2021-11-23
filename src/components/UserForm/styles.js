@@ -44,4 +44,8 @@ export const Button = styled.button`
 	&:hover {
 		background-position: right center;
 	}
+	&[disabled] {
+		opacity: 0.5;
+		cursor: initial;
+	}
 `
