@@ -8,7 +8,7 @@ export const UserForm = ({ onSubmit, title, loading, error }) => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
-		onSubmit({ email: email.value, password: password.value })
+		onSubmit({ email: email.value, password: password.value }, title)
 	}
 
 	return (

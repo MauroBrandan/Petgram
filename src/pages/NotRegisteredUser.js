@@ -2,23 +2,36 @@ import React, { useContext } from 'react'
 import { Context } from '../Context'
 import { UserForm } from '../components/UserForm'
 import { useRegister } from '../hooks/useRegister'
+import { useLogin } from '../hooks/useLogin'
 
 export const NotRegisteredUser = () => {
 	const { activateAuth } = useContext(Context)
 	const { register, loading, error } = useRegister()
+	const { login, loading: loadingLogin, error: errorLogin } = useLogin()
 
-	const onSubmit = ({ email, password }) => {
+	const onSubmit = ({ email, password }, title) => {
 		const input = { email, password }
 		const variables = { input }
 
-		register({ variables })
-			.then(activateAuth)
-			.catch((error) => {
-				console.log(error.graphQLErrors[0].message)
-			})
+		if (title === 'Registrarse') {
+			register({ variables })
+				.then(activateAuth)
+				.catch((error) => {
+					console.log(error.graphQLErrors[0].message)
+				})
+		}
+
+		if (title === 'Iniciar sesión') {
+			login({ variables })
+				.then(activateAuth)
+				.catch((error) => {
+					console.log(error.graphQLErrors[0].message)
+				})
+		}
 	}
 
 	const errorMsg = error && 'El usuario ya existe o hay algún problema'
+	const errorMsgLogin = errorLogin && 'El usuario no existe o la contraseña es incorrecta'
 
 	return (
 		<>
@@ -28,7 +41,12 @@ export const NotRegisteredUser = () => {
 				loading={loading}
 				error={errorMsg}
 			/>
-			<UserForm onSubmit={activateAuth} title='Iniciar sesión' />
+			<UserForm
+				onSubmit={onSubmit}
+				title='Iniciar sesión'
+				loading={loadingLogin}
+				error={errorMsgLogin}
+			/>
 		</>
 	)
 }
