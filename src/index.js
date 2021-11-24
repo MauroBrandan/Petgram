@@ -46,10 +46,10 @@ const client = new ApolloClient({
 })
 
 ReactDOM.render(
-	<Provider>
-		<ApolloProvider client={client}>
+	<ApolloProvider client={client}>
+		<Provider>
 			<App />
-		</ApolloProvider>
-	</Provider>,
+		</Provider>
+	</ApolloProvider>,
 	document.getElementById('app')
 )

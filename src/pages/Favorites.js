@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Context } from '../Context'
 import { useGetFavorites } from '../hooks/useGetFavorites'
 import { ListOfFavs, ListOfFavsSkeleton } from '../components/ListOfFavs'
 
 export const Favorites = () => {
 	const { data, loading, error } = useGetFavorites()
+	const { removeAuth } = useContext(Context)
 
 	if (loading) return <ListOfFavsSkeleton />
 
-	if (error) return <h2>Internal Server Error</h2>
+	if (error) return removeAuth()
 
 	const { favs } = data
 
