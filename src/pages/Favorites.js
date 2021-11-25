@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Helmet } from 'react-helmet'
 import { Context } from '../Context'
 import { useGetFavorites } from '../hooks/useGetFavorites'
 import { ListOfFavs, ListOfFavsSkeleton } from '../components/ListOfFavs'
@@ -13,5 +14,12 @@ export const Favorites = () => {
 
 	const { favs } = data
 
-	return <ListOfFavs favs={favs} />
+	return (
+		<>
+			<Helmet>
+				<title>Petgram | Tus Favoritos 😻</title>
+			</Helmet>
+			<ListOfFavs favs={favs} />
+		</>
+	)
 }

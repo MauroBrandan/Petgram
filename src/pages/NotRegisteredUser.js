@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Helmet } from 'react-helmet'
 import { Context } from '../Context'
 import { UserForm } from '../components/UserForm'
 import { useRegister } from '../hooks/useRegister'
@@ -41,6 +42,9 @@ export const NotRegisteredUser = () => {
 
 	return (
 		<>
+			<Helmet>
+				<title>Petgram | Inicia Sesión o Registrate</title>
+			</Helmet>
 			<UserForm
 				onSubmit={onSubmit}
 				title='Registrarse'

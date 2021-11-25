@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import { Context } from './Context'
 import { GlobalStyles } from './styles/GlobalStyles'
 import { Logo } from './components/Logo'
@@ -16,6 +17,12 @@ export const App = () => {
 
 	return (
 		<BrowserRouter>
+			<Helmet>
+				<meta
+					name='description'
+					content='Con Petgram puedes encontrar fotos de animales domésticos muy bonitos'
+				/>
+			</Helmet>
 			<GlobalStyles />
 			<Logo />
 			<Routes>
