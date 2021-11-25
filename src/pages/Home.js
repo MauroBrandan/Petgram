@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 import { ListOfCategories } from '../components/ListOfCategories'
 import { ListOfPhotoCards } from '../components/ListOfPhotoCards/index'
 
-export const Home = () => {
+const HomePage = () => {
 	let params = useParams()
 
 	return (
@@ -17,3 +17,5 @@ export const Home = () => {
 		</>
 	)
 }
+
+export const Home = React.memo(HomePage)

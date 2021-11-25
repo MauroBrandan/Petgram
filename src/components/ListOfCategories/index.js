@@ -4,7 +4,7 @@ import { List, Item } from './styles'
 import { Category, CategorySkeleton } from '../Category/'
 import { useFetchData } from '../../hooks/useFetchData'
 
-export const ListOfCategories = () => {
+const ListOfCategoriesComponent = () => {
 	const [categories, loading] = useFetchData('https://petgram-api-mb.vercel.app/categories', [])
 	const [showFixed, setShowFixed] = useState(false)
 
@@ -50,3 +50,5 @@ export const ListOfCategories = () => {
 		</>
 	)
 }
+
+export const ListOfCategories = React.memo(ListOfCategoriesComponent)

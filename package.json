@@ -5,7 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"build": "webpack --mode production",
-		"start": "webpack serve --open --mode development"
+		"build:dev": "webpack --mode development",
+		"start": "webpack serve --open --mode development",
+		"serve": "npx serve dist -s"
 	},
 	"keywords": [],
 	"author": "Mauro Brandan <maurobrandan.mb@gmail.com>",
