@@ -4,7 +4,7 @@ import { Context } from '../Context'
 import { useGetFavorites } from '../hooks/useGetFavorites'
 import { ListOfFavs, ListOfFavsSkeleton } from '../components/ListOfFavs'
 
-export const Favorites = () => {
+export default () => {
 	const { data, loading, error } = useGetFavorites()
 	const { removeAuth } = useContext(Context)
 
